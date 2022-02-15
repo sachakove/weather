@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+// import { Switch } from "@mui/material";
+import { Container } from "@mui/material";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { Route, Routes } from "react-router-dom";
+import NavBar from "./components/NavBar/NavBar";
+import Favorites from "./screens/Favorites";
+import Home from "./screens/Home/Home";
 
-function App() {
+const App = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    console.log("here");
+    // dispatch(getCurrentWeather("215793"));
+    // dispatch(getForecast("215793"));
+    // dispatch(selectLocation({ name: "Tel Aviv", id: "215793", rank: "31" }));
+    // ################################   APP STARTS WITH // SELECT_LOCATION ==> TEL AVIV //   ################################
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/favorites" element={<Favorites />} />
+      </Routes>
+    </>
   );
-}
+};
 
 export default App;
